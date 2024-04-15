@@ -5,6 +5,9 @@ const port = 9017
 app.use('/weathergpt', createProxyMiddleware({
     target: 'https://weathergpt.vercel.app/api/',
     changeOrigin: true,
+    pathRewrite: {
+        '^/weathergpt': '/', // Rewrite the path; remove /weathergpt
+    },
     onProxyReq: (proxyReq, req, res) => {
         proxyReq.removeHeader('x-forwarded-for');
         proxyReq.removeHeader('x-real-ip');
@@ -16,6 +19,9 @@ app.use('/weathergpt', createProxyMiddleware({
 app.use('/openai', createProxyMiddleware({
     target: 'https://api.openai.com/v1/',
     changeOrigin: true,
+    pathRewrite: {
+        '^/openai': '/', // Rewrite the path; remove /openai
+    },
     onProxyReq: (proxyReq, req, res) => {
         proxyReq.removeHeader('x-forwarded-for');
         proxyReq.removeHeader('x-real-ip');
