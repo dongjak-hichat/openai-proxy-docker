@@ -14,6 +14,17 @@ app.use('/', createProxyMiddleware({
         proxyRes.headers['Access-Control-Allow-Origin'] = '*';
     }
 }));
+app.use('/weathergpt', createProxyMiddleware({
+    target: 'https://weathergpt.vercel.app/api',
+    changeOrigin: true,
+    onProxyReq: (proxyReq, req, res) => {
+        proxyReq.removeHeader('x-forwarded-for');
+        proxyReq.removeHeader('x-real-ip');
+    },
+    onProxyRes: function (proxyRes, req, res) {
+        proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+    }
+}));
 
 app.listen(port, () => {
     console.log(`Proxy agent started: http://localhost:${port}`)
