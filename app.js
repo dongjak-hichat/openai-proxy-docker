@@ -13,8 +13,8 @@ app.use('/weathergpt', createProxyMiddleware({
         proxyRes.headers['Access-Control-Allow-Origin'] = '*';
     }
 }));
-app.use('/', createProxyMiddleware({
-    target: 'https://api.openai.com',
+app.use('/openai', createProxyMiddleware({
+    target: 'https://api.openai.com/v1',
     changeOrigin: true,
     onProxyReq: (proxyReq, req, res) => {
         proxyReq.removeHeader('x-forwarded-for');
