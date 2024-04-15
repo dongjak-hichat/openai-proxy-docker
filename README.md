@@ -4,7 +4,8 @@
 docker stop aiworld-plugin-proxy && \
 docker rm aiworld-plugin-proxy  && \
 docker build --no-cache -t aiworld/plugin-proxy:latest . && \
-docker run --name aiworld-plugin-proxy -d -p 9017:9017 aiworld/plugin-proxy:latest
+docker run --name aiworld-plugin-proxy -d -p 9017:9017 aiworld/plugin-proxy:latest && \
+docker logs -f aiworld-plugin-proxy
 ```
 
 ## How to use

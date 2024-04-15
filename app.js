@@ -3,7 +3,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express()
 const port = 9017
 app.use('/weathergpt', createProxyMiddleware({
-    target: 'https://weathergpt.vercel.app/api',
+    target: 'https://weathergpt.vercel.app/api/',
     changeOrigin: true,
     onProxyReq: (proxyReq, req, res) => {
         proxyReq.removeHeader('x-forwarded-for');
@@ -14,7 +14,7 @@ app.use('/weathergpt', createProxyMiddleware({
     }
 }));
 app.use('/openai', createProxyMiddleware({
-    target: 'https://api.openai.com/v1',
+    target: 'https://api.openai.com/v1/',
     changeOrigin: true,
     onProxyReq: (proxyReq, req, res) => {
         proxyReq.removeHeader('x-forwarded-for');
