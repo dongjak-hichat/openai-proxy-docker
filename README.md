@@ -1,6 +1,12 @@
-# OpenAI Proxy Docker
-openai-proxy-docker provides an OpenAI API proxy server image by [Docker](https://hub.docker.com/r/shawnai/openai-proxy-docker)
+# 构建
 
+```bash
+docker stop aiworld-plugin-proxy && \
+docker rm aiworld-plugin-proxy  && \
+docker build -t aiworld/plugin-proxy:latest . && \
+docker run --name aiworld-plugin-proxy -d -p 9017:9017 aiworld/plugin-proxy:latest
+
+```
 
 ## How to use
 Just:
